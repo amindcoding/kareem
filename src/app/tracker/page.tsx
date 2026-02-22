@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useTrackerStore } from '@/lib/stores/useTrackerStore';
 import { DEFAULT_HABITS, toLocalISODate } from '@/lib/constants';
 import { Habit } from '@/types';
@@ -13,6 +13,7 @@ import { getTodayRamadanDay, getRamadanDate, formatDateId, getHariName } from '@
 
 function TrackerContent() {
     const searchParams = useSearchParams();
+    const router = useRouter();
     const dayParam = searchParams.get('day');
 
     const { customHabits, todayXP, isLoaded, loadToday } = useTrackerStore();
@@ -33,10 +34,19 @@ function TrackerContent() {
 
     useEffect(() => {
         if (imsakiyah) {
+            // Guard clause: Prevent URL bypass into invalid or future dates
+            if (dayParam) {
+                const parsedDay = parseInt(dayParam);
+                if (isNaN(parsedDay) || parsedDay < 1 || parsedDay > todayTanggal) {
+                    router.replace('/');
+                    return;
+                }
+            }
+
             // Only load when imsakiyah data is ready to calculate correct active date string
             loadToday(targetDateStr);
         }
-    }, [loadToday, targetDateStr, imsakiyah]);
+    }, [dayParam, imsakiyah, targetDateStr, loadToday, todayTanggal, router]);
 
     // Group default habits by category
     const wajib = DEFAULT_HABITS.filter((h) => h.category === 'wajib');

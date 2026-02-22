@@ -137,3 +137,48 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Custom Driver.js Theme */
+.kareem-driver-theme .driver-popover {
+  border-radius: 16px;
+  border: 1px solid #dcfce7;
+  box-shadow: 0 10px 25px -5px rgba(22, 163, 74, 0.1), 0 8px 10px -6px rgba(22, 163, 74, 0.1);
+  padding: 16px;
+  background: white;
+  font-family: inherit;
+}
+.kareem-driver-theme .driver-popover-title {
+  font-size: 16px;
+  color: #16a34a;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.kareem-driver-theme .driver-popover-description {
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.kareem-driver-theme .driver-popover-footer button {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 6px 12px;
+  text-shadow: none;
+  transition: all 0.2s ease;
+}
+.kareem-driver-theme .driver-popover-footer button:hover {
+  background: #dcfce7;
+  color: #15803d;
+}
+.kareem-driver-theme .driver-popover-navigation-btns {
+  gap: 8px;
+}
+.kareem-driver-theme .driver-popover-progress-text {
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+}

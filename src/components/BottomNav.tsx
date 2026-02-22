@@ -17,7 +17,7 @@ export default function BottomNav() {
     if (pathname === '/jadwal') return null;
 
     return (
-        <nav className="fixed bottom-6 left-1/2 z-50 w-[90%] max-w-[400px] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/80 p-2 text-gray-600 shadow-navbar backdrop-blur-xl">
+        <nav id="tour-bottom-nav" className="fixed bottom-6 left-1/2 z-50 w-[90%] max-w-[400px] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/80 p-2 text-gray-600 shadow-navbar backdrop-blur-xl">
             <div className="flex items-center justify-around">
                 {tabs.map((tab) => {
                     const isActive =

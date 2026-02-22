@@ -39,7 +39,7 @@ export default function RootLayout({
           <Toaster
             position="top-center"
             toastOptions={{
-              duration: 4000,
+              duration: 3000,
               style: {
                 borderRadius: '16px',
                 background: '#333',

@@ -112,9 +112,14 @@ export default function AboutPage() {
                 <button
                     onClick={() => {
                         toast((t) => (
-                            <div className="flex flex-col gap-3 p-1">
-                                <div className="text-sm font-medium text-gray-800">
-                                    Yakin ingin menghapus SELURUH data ibadah dan memulai dari nol?
+                            <div className="flex flex-col gap-3 p-2">
+                                <div className="flex items-start gap-3">
+                                    <div className="rounded-full bg-red-100 p-2 text-red-600 shrink-0">
+                                        <TriangleAlert size={20} />
+                                    </div>
+                                    <div className="text-sm font-medium text-gray-800 leading-snug">
+                                        Yakin ingin menghapus SELURUH data ibadah dan memulai dari nol?
+                                    </div>
                                 </div>
                                 <div className="flex gap-2">
                                     <button
@@ -130,8 +135,7 @@ export default function AboutPage() {
                                                 await db.delete();
                                                 localStorage.clear();
                                                 window.location.href = '/';
-                                            } catch (e) {
-                                                console.error('Error wiping data:', e);
+                                            } catch {
                                                 toast.error('Gagal menghapus data.');
                                             }
                                         }}

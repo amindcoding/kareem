@@ -6,6 +6,7 @@ import { useProvinsi, useKabkota, useImsakiyah } from '@/services/imsakiyahHooks
 import { getTodayRamadanDay, getRamadanDate, getHariName, formatDateId } from '@/lib/ramadan';
 import Link from 'next/link';
 import { ChevronLeft, MapPin, Sunrise, Sun, Sunset, Moon, CloudMoon, Clock } from 'lucide-react';
+import Image from 'next/image';
 
 export default function JadwalPage() {
     const { provinsi, kabkota, setLocation } = useLocationStore();
@@ -30,10 +31,12 @@ export default function JadwalPage() {
         <div className="relative min-h-[100dvh] w-full">
             {/* Fixed Background Image with Dark Overlay */}
             <div className="fixed inset-0 z-0">
-                <img
+                <Image
                     src="/kaaba-bg.jpg"
                     alt="Kaaba Background"
-                    className="h-full w-full object-cover"
+                    fill
+                    className="object-cover"
+                    priority
                 />
                 <div className="absolute inset-0 bg-gray-950/70 backdrop-blur-[2px]"></div>
                 {/* Gradient fade to black at bottom so last cards aren't hard to read */}

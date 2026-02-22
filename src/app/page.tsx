@@ -5,6 +5,7 @@ import { useTrackerStore } from '@/lib/stores/useTrackerStore';
 import { DEFAULT_HABITS } from '@/lib/constants';
 import XPBar from '@/components/XPBar';
 import RamadanHeatmap from '@/components/RamadanHeatmap';
+import AppTour from '@/components/AppTour';
 import Link from 'next/link';
 import { useLocationStore } from '@/lib/stores/useLocationStore';
 import { useImsakiyah } from '@/services/imsakiyahHooks';
@@ -163,6 +164,7 @@ export default function DashboardPage() {
 
   return (
     <div className="page-enter space-y-5 px-4 pt-6">
+      <AppTour />
       {/* ── Header with countdown ── */}
       <div className="rounded-2xl gradient-hero p-5 flex justify-between items-start gap-2">
         <div>
@@ -195,7 +197,7 @@ export default function DashboardPage() {
 
       {/* ── Today's Prayer Card (brighter) ── */}
       {todaySchedule && (
-        <div className="rounded-2xl gradient-primary p-5 text-white shadow-lg">
+        <div id="tour-prayer-card" className="rounded-2xl bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 p-5 text-white shadow-lg ring-1 ring-primary-500/20">
           <div className="flex items-center justify-between">
             <p className="text-xs font-medium text-white/90">
               📍 {kabkota} · {todayHari}, {todayFormatted}
@@ -231,12 +233,12 @@ export default function DashboardPage() {
       )}
 
       {/* ── XP Bar (clickable → /progress) ── */}
-      <Link href="/progress" className="block">
+      <Link href="/progress" className="block" id="tour-xp-bar">
         <XPBar totalXP={totalXP} />
       </Link>
 
       {/* ── Today's Summary — Duolingo style with streak overlay ── */}
-      <div className="relative rounded-2xl border border-primary-100 bg-gradient-to-br from-primary-50 to-white p-5 shadow-card overflow-visible">
+      <div id="tour-daily-summary" className="relative rounded-2xl border border-primary-100 bg-gradient-to-br from-primary-50 to-white p-5 shadow-card overflow-visible">
         {/* Streak badge — overlaid top-right, clickable */}
         <button
           onClick={() => {
@@ -352,7 +354,9 @@ export default function DashboardPage() {
 
       {/* ── Ramadan Heatmap ── */}
       {imsakiyah && (
-        <RamadanHeatmap hijriah={imsakiyah.hijriah} todayTanggal={todayTanggal} />
+        <div id="tour-heatmap">
+          <RamadanHeatmap hijriah={imsakiyah.hijriah} todayTanggal={todayTanggal} />
+        </div>
       )}
 
       {/* ── Footer ── */}

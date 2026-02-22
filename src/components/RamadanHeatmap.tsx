@@ -102,7 +102,7 @@ export default function RamadanHeatmap({ hijriah, todayTanggal }: RamadanHeatmap
                             <div
                                 className={`aspect-square w-full rounded-md transition-all duration-300 ${colorClass} ${day.isToday ? 'scale-110' : 'hover:scale-105'}`}
                             ></div>
-                            <span className={`absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[11px] font-medium ${day.isToday ? 'text-white font-bold' : (day.count > 6 ? 'text-white' : 'text-gray-500')}`}>
+                            <span className={`absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[11px] font-medium ${day.isToday ? (day.count > 6 ? 'text-white font-bold' : 'text-gray-500 font-bold') : (day.count > 6 ? 'text-white' : 'text-gray-500')}`}>
                                 {day.tanggal}
                             </span>
 

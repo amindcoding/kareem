@@ -3,6 +3,8 @@ import './globals.css';
 import BottomNav from '@/components/BottomNav';
 import QueryProvider from '@/providers/QueryProvider';
 import { Toaster } from 'react-hot-toast';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: 'Kareem — Pelacak Ibadah Ramadan',
@@ -48,6 +50,8 @@ export default function RootLayout({
               },
             }}
           />
+          <Analytics />
+          <SpeedInsights />
         </QueryProvider>
       </body>
     </html>
